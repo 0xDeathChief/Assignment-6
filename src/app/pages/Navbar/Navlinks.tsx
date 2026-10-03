@@ -13,13 +13,12 @@ const NavLinks = () => {
     },
     {
       name: "My Plan",
-      link: "/plan",
+      link: "/pages/myplan",
     },
   ];
 
   return (
     <div className="flex gap-10">
-
       {menuItems.map((item) => (
         <Link
           key={item.name}
@@ -34,7 +33,6 @@ const NavLinks = () => {
           {item.name}
         </Link>
       ))}
-
     </div>
   );
 };

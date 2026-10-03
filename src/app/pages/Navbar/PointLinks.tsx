@@ -10,7 +10,7 @@ const PlanSavedLinks = () => {
     <div className="flex items-center gap-8">
 
       <Link
-        href="/plan"
+        href="/pages/Plan"
         onClick={() => setActiveButton("Plan")}
         className={
           activeButton === "Plan"
@@ -33,7 +33,7 @@ const PlanSavedLinks = () => {
 
   
       <Link
-        href="/saved"
+        href="/pages/Plan"
         onClick={() => setActiveButton("Saved")}
         className={
           activeButton === "Saved"
