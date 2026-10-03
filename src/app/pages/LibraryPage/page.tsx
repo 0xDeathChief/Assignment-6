@@ -5,6 +5,7 @@ import { Item } from "@/app/Types/type";
 import { IoTimeOutline } from "react-icons/io5";
 import { FaFireFlameCurved } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
+import Link from "next/link";
 
 const oswald = Oswald({ subsets: ["latin"] });
 
@@ -44,21 +45,22 @@ const LibraryPage = async () => {
 
             <div className="card-body">
               <div className="card-actions justify-start">
-                <div>
+                <div className="flex flex-wrap gap-2">
                   {item.muscleGroups.map((muscle) => (
                     <div
                       key={muscle}
-                      className="badge bg-[#C2F800] px-4 py-2 font-semibold text-black"
+                      className="badge bg-[#C2F800] px-2 py-2 font-semibold text-black rounded-xl"
                     >
                       {muscle}
                     </div>
                   ))}
                 </div>
               </div>
-
-              <h2 className={`${oswald.className} text-2xl card-title`}>
-                {item.name}
-              </h2>
+              <Link href={`/pages/LibraryPage/${item.id}`}>
+                <h2 className={`${oswald.className} text-2xl card-title`}>
+                  {item.name}
+                </h2>
+              </Link>
 
               <p className="font-inter text-[#9CA3AF] text-sm">
                 {item.equipment}
