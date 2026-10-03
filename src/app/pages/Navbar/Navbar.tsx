@@ -1,19 +1,29 @@
 import Image from "next/image";
 import Logo from "@/app/assets/logo.png";
-import Link from "next/dist/client/link";
+import Link from "next/link";
 import NavLinks from "./Navlinks";
 import PointLinks from "./PointLinks";
 import { Oswald } from "next/font/google";
 
-const oswald = Oswald({ subsets: ["latin"] });
+const oswald = Oswald({
+  subsets: ["latin"],
+});
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar sticky top-0 z-50 bg-base-100 shadow-sm">
       <div className="navbar container mx-auto">
+
+        {/* Left Side */}
         <div className="navbar-start">
+
+          {/* Mobile Menu */}
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+            >
               <svg
                 aria-label="Menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,27 +43,40 @@ const Navbar = () => {
 
             <ul
               tabIndex={-1}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content z-1 mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
             >
               <NavLinks />
             </ul>
           </div>
 
-          <Link href="/" className={`${oswald.className} text-xl`}>
-            <Image className="btn btn-ghost text-xl" src={Logo} alt="logo" />
+          {/* Logo */}
+          <Link
+            href="/"
+            className={`${oswald.className} flex items-center gap-2 text-xl`}
+          >
+            <Image
+              src={Logo}
+              alt="FITLOG logo"
+              width={40}
+              height={40}
+            />
+
             FITLOG
           </Link>
         </div>
 
+        {/* Desktop Navigation */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <NavLinks />
           </ul>
         </div>
 
+        {/* Right Side */}
         <div className="navbar-end flex gap-12">
           <PointLinks />
         </div>
+
       </div>
     </div>
   );
