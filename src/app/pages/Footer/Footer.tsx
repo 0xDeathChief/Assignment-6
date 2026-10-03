@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/app/assets/logo.png";
+import { Oswald } from "next/font/google";
+
+const oswald = Oswald({ subsets: ["latin"] });
 
 const Footer = () => {
   return (
@@ -9,7 +12,7 @@ const Footer = () => {
         
         <aside className="flex items-center gap-4">
           <Image src={Logo} alt="FitLog logo" width={50} height={50} />
-          <h1>FITLOG</h1>
+          <h1 className={`${oswald.className} text-xl`}>FITLOG</h1>
         </aside>
 
 

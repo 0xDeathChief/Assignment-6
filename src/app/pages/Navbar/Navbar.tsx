@@ -3,6 +3,9 @@ import Logo from "@/app/assets/logo.png";
 import Link from "next/dist/client/link";
 import NavLinks from "./Navlinks";
 import PointLinks from "./PointLinks";
+import { Oswald } from "next/font/google";
+
+const oswald = Oswald({ subsets: ["latin"] });
 
 const Navbar = () => {
   return (
@@ -36,8 +39,8 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <Link href="/" className="font-oswald">
-            <Image className="btn btn-ghost text-xl" src={Logo} alt="daisyUI" />
+          <Link href="/" className={`${oswald.className} text-xl`}>
+            <Image className="btn btn-ghost text-xl" src={Logo} alt="logo" />
             FITLOG
           </Link>
         </div>
