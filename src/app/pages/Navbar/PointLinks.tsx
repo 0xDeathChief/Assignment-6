@@ -1,59 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useGymContext } from "@/context/GymContext";
 
 const PlanSavedLinks = () => {
-  const [activeButton, setActiveButton] = useState("Plan");
+  const { plan, saved } = useGymContext();
 
   return (
-    <div className="flex items-center gap-8">
-
+    <div className="flex items-center gap-3 sm:gap-8">
       <Link
-        href="/pages/myplan"
-        onClick={() => setActiveButton("Plan")}
-        className={
-          activeButton === "Plan"
-            ? "flex items-center gap-3 text-white"
-            : "flex items-center gap-3 text-gray-400 hover:text-white"
-        }
+        href="/my-plan#today"
+        aria-label={`Today's plan: ${plan.length} workouts`}
+        className="flex items-center gap-2 text-white sm:gap-3"
       >
-        <span>Plan</span>
+        <span className="hidden sm:inline">Plan</span>
 
-        <span
-          className={
-            activeButton === "Plan"
-              ? "grid h-8 w-8 place-items-center rounded-full bg-[#C2F800] text-sm font-bold text-black"
-              : "grid h-8 w-8 place-items-center rounded-full border border-white/20 text-sm font-bold text-white"
-          }
-        >
-          0
+        <span className="grid h-8 min-w-8 place-items-center rounded-full bg-[#C2F800] px-2 text-sm font-bold text-black">
+          {plan.length}
         </span>
       </Link>
 
-  
       <Link
-        href="/pages/myplan"
-        onClick={() => setActiveButton("Saved")}
-        className={
-          activeButton === "Saved"
-            ? "flex items-center gap-3 text-white"
-            : "flex items-center gap-3 text-gray-400 hover:text-white"
-        }
+        href="/my-plan#saved"
+        aria-label={`Saved workouts: ${saved.length}`}
+        className="flex items-center gap-2 text-gray-400 hover:text-white sm:gap-3"
       >
-        <span>Saved</span>
+        <span className="hidden sm:inline">Saved</span>
 
-        <span
-          className={
-            activeButton === "Saved"
-              ? "grid h-8 w-8 place-items-center rounded-full bg-[#C2F800] text-sm font-bold text-black"
-              : "grid h-8 w-8 place-items-center rounded-full border border-white/20 text-sm font-bold text-white"
-          }
-        >
-          0
+        <span className="grid h-8 min-w-8 place-items-center rounded-full border border-white/20 px-2 text-sm font-bold text-white">
+          {saved.length}
         </span>
       </Link>
-
     </div>
   );
 };

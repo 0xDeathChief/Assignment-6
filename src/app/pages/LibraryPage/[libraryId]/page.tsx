@@ -1,11 +1,8 @@
-import React from "react";
 import Image from "next/image";
 import { Oswald } from "next/font/google";
-import { Bookmark } from "lucide-react";
-import { FaCalendarCheck } from "react-icons/fa";
-import { Item } from "@/app/Types/type";
-import Link from "next/link";
+import type { Item } from "@/app/Types/type";
 import WorksButton from "../WorksButton";
+import { notFound } from "next/navigation";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -15,6 +12,11 @@ const getData = async (libraryId: string): Promise<Item> => {
   const response = await fetch(
     `https://api.abcz.workers.dev/api/fitlog/${libraryId}`,
   );
+
+  if (!response.ok) {
+    notFound();
+  }
+
   const data = await response.json();
   return data;
 };
@@ -108,19 +110,16 @@ const PageDetails = async ({
             Instructions
           </h2>
 
-          <div className="mt-4 space-y-3">
-            {item.instructions.map((instruction: string, index: number) => (
-              <div key={index} className="flex gap-3 text-sm text-[#9CA3AF]">
+          <ol className="mt-4 space-y-3">
+            {item.instructions.map((instruction, index) => (
+              <li key={index} className="flex gap-3 text-sm text-[#9CA3AF]">
                 <span className="font-bold text-[#C2F800]">{index + 1}.</span>
-
                 <span>{instruction}</span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
-          <div className="mt-8 flex gap-3">
-            <WorksButton />
-          </div>
+          <WorksButton item={item} />
         </div>
       </div>
     </div>

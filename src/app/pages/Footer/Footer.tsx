@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Logo from "@/app/assets/logo.png";
 import { Oswald } from "next/font/google";
 
@@ -17,7 +16,9 @@ const Footer = () => {
 
 
         <aside className="flex items-center gap-6 text-sm">
-          <p>© {new Date().getFullYear()} FitLog - Workout Library, Train hard, log honest.</p>
+          <p>
+            © 2026 FitLog — Workout Library. Train hard, log honest.
+          </p>
         </aside>
       </div>
     </footer>

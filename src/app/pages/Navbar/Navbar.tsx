@@ -11,17 +11,16 @@ const oswald = Oswald({
 
 const Navbar = () => {
   return (
-    <div className="navbar sticky top-0 z-50 bg-base-100 shadow-sm">
-      <div className="navbar container mx-auto">
-
+    <header className="sticky top-0 z-50 bg-base-100 shadow-sm">
+      <div className="navbar container mx-auto px-3">
         {/* Left Side */}
         <div className="navbar-start">
-
           {/* Mobile Menu */}
           <div className="dropdown">
-            <div
+            <button
               tabIndex={0}
-              role="button"
+              type="button"
+              aria-label="Open navigation menu"
               className="btn btn-ghost lg:hidden"
             >
               <svg
@@ -39,14 +38,16 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </div>
+            </button>
 
-            <ul
+            <div
               tabIndex={-1}
-              className="menu menu-sm dropdown-content z-1 mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
+              className="dropdown-content z-1 mt-3 w-52 rounded-box bg-base-100 p-3 shadow"
             >
-              <NavLinks />
-            </ul>
+              <nav aria-label="Mobile navigation">
+                <NavLinks />
+              </nav>
+            </div>
           </div>
 
           {/* Logo */}
@@ -60,25 +61,23 @@ const Navbar = () => {
               width={40}
               height={40}
             />
-
             FITLOG
           </Link>
         </div>
 
         {/* Desktop Navigation */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <nav aria-label="Main navigation">
             <NavLinks />
-          </ul>
+          </nav>
         </div>
 
         {/* Right Side */}
-        <div className="navbar-end flex gap-12">
+        <div className="navbar-end flex gap-2 sm:gap-8">
           <PointLinks />
         </div>
-
       </div>
-    </div>
+    </header>
   );
 };
 
